@@ -9,19 +9,19 @@ const initialStore = {
     lista: [],
 }
 
-export const addUsuario = (nombre, email) => {
+export const addUsuario = (name, email) => {
     return {
       type: 'ADD_USER',
-      name: nombre,
+      name: name,
       email: email
     }
 }
 
-export const editUsuario = (id, nombre, email) => {
+export const editUsuario = (id, name, email) => {
     return {
         type: 'EDIT_USER',
         id: id,
-        name: nombre,
+        name: name,
         email: email
     }
 }

@@ -6,9 +6,9 @@ import {reduxForm} from 'redux-form'
 
 const onSubmit = (values, dispatch) => {
     if (!values.id) {
-        dispatch(addUsuario(values.nombre, values.email))
+        dispatch(addUsuario(values.name, values.email))
     } else {
-        dispatch(editUsuario(values.id, values.nombre, values.email))
+        dispatch(editUsuario(values.id, values.name, values.email))
     }
 }
 

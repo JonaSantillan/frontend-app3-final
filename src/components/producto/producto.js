@@ -8,7 +8,7 @@ class Producto extends React.Component {
         return (
             <div className={css.counter}>
                 <span className={css.label}>
-                    <b>Nombre:</b> {this.props.item.nombre}<br></br>
+                    <b>Nombre:</b> {this.props.item.name}<br></br>
                     <b>Email:</b> {this.props.item.email}<br></br>
                 </span>
                 <button hidden={!this.props.logged} className={css.button} onClick={this.editarUsuario}>Editar</button>

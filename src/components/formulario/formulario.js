@@ -17,7 +17,7 @@ class Formulario extends React.Component {
       if (usuarioEditado) {
         this.props.initialize({ 
           id: usuarioEditado[0].id,
-          name: usuarioEditado[0].nombre,
+          name: usuarioEditado[0].name,
           email: usuarioEditado[0].email,
         });
       }
@@ -32,8 +32,8 @@ class Formulario extends React.Component {
               <div className={css.informationSection}>
                   <span className={css.titleAlumno}>Usuario:</span>
                   <Field name="id" className={css.hiddenInput} component="input" type="text" />
-                  <Field placeholder="name" name="nombre" className={css.input} component="input" type="text" />
-                  <Field placeholder="email" name="email" className={css.input} component="input" type="text" />
+                  <Field placeholder="Nombre" name="name" className={css.input} component="input" type="text" />
+                  <Field placeholder="Email" name="email" className={css.input} component="input" type="text" />
                   <button id="saveButton" className={css.buttonSave} onClick={this.saveNewUsuario}>Guardar Información</button>
               </div>
             </section>
