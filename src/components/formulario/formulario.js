@@ -10,7 +10,8 @@ class Formulario extends React.Component {
       this.props.history.push('/');
     }
     if (this.props.match.params.id) {
-      let productoEditado = this.props.productos.filter(obj => {
+      let productoEditado = this.props.productos.filter(obj => 
+      {
         return obj._id === this.props.match.params.id
       })
       if (productoEditado) {
