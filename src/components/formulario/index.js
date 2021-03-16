@@ -1,7 +1,6 @@
 import Formulario from './formulario'
 import { connect } from 'react-redux'
 import { addUsuario, editUsuario} from '../../redux/index'
-import { editUsuario} from '../../redux/index'
 import {reduxForm} from 'redux-form'
 
 
