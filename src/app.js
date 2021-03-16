@@ -6,7 +6,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import './app.module.css';
+import './App.module.css';
 import Formulario from './components/formulario/index';
 
 function App() {
@@ -14,15 +14,16 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" 
+                 component={Login} 
+          />
           <Route exact path="/" component={Home} />
           <Route exact path="/formulario" component={Formulario} />
           <Route exact path="/formulario/:id" component={Formulario} />
-          <Route path="*" component={Home} />
         </Switch>
       </div>
     </Router>
   );
 }
-
+//app
 export default App;

@@ -2,7 +2,7 @@ import React from 'react';
 import css from './home.module.css';
 import Producto from '../producto/index'
 
-class Productos extends React.Component {
+class Home extends React.Component {
 
   componentDidMount = () => {
       this.props.fetchProductos();
@@ -43,4 +43,4 @@ class Productos extends React.Component {
 }
 
 
-export default Productos;
+export default Home;
