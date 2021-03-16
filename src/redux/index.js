@@ -90,6 +90,7 @@ const reducer = (store = initialStore, action) => {
             };
         }
         case 'ADD_USER': {
+          const usuarios = [...store.lista]
             let usuario = JSON.stringify({
                 name: action.name,
                 email: action.email,
@@ -114,6 +115,7 @@ const reducer = (store = initialStore, action) => {
           };
       }
         case 'EDIT_USER': {
+          const usuarios = [...store.lista]
                let usuario = JSON.stringify({
                  name: action.name,
                  email: action.email,
