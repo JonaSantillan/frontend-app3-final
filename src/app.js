@@ -20,6 +20,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/formulario" component={Formulario} />
           <Route exact path="/formulario/:id" component={Formulario} />
+          <Route path="*" component={Home} />
         </Switch>
       </div>
     </Router>
