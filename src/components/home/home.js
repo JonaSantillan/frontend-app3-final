@@ -32,6 +32,7 @@ class Productos extends React.Component {
   loginLogout = () => {
     if (this.props.logged) {
       this.props.logout();
+      this.props.history.push("/login")
     } else {
       this.props.history.push("/login")
     }
