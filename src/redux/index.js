@@ -96,11 +96,15 @@ const reducer = (store = initialStore, action) => {
               name: action.name,
               email: action.email
           })
-          console.log("usuario agregado");
-          return {
-              lista: newUsers
-          };
+          const list = newUsers
+          console.log(list)
+            return {
+                lista: list
+            };
+
       }
+
+
         case 'EDIT_USER': {
           const usuarios = [...store.lista]
                let usuario = JSON.stringify({
@@ -149,6 +153,7 @@ const reducer = (store = initialStore, action) => {
         default:
             return store;
     }
+    
 }
 
 const rootReducer = combineReducers({

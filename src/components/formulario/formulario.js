@@ -4,33 +4,13 @@ import { Field } from 'redux-form'
 
 class Formulario extends React.Component {
 
-  componentWillMount = () => {
-    
-    if (!this.props.logged) {
-      this.props.history.push('/');
-    }
-    if (this.props.match.params.id) {
-      let usuarioEditado = this.props.usuarios.filter(obj => 
-      {
-        return obj.id === this.props.match.params.id
-      })
-      if (usuarioEditado) {
-        this.props.initialize({ 
-          id: usuarioEditado[0].id,
-          name: usuarioEditado[0].name,
-          email: usuarioEditado[0].email,
-        });
-      }
-    }
-  }
-
   render = () => {
       return (
           <div className={css.app}>
           <div className={css.container}>
             <section className={css.addSection}>  
               <div className={css.informationSection}>
-                  <span className={css.titleAlumno}>Usuario:</span>
+                  <span className={css.titleAlumno}>Datos del Usuario:</span>
                   <Field name="id" className={css.hiddenInput} component="input" type="text" />
                   <Field placeholder="Nombre" name="name" className={css.input} component="input" type="text" />
                   <Field placeholder="Email" name="email" className={css.input} component="input" type="text" />
@@ -55,3 +35,23 @@ class Formulario extends React.Component {
   }
 }
 export default Formulario
+
+/* componentWillMount = () => {
+    
+  if (!this.props.logged) {
+    this.props.history.push('/');
+  }
+  if (this.props.match.params.id) {
+    let usuarioEditado = this.props.usuarios.filter(obj => 
+    {
+      return obj.id === this.props.match.params.id
+    })
+    if (usuarioEditado) {
+      this.props.initialize({ 
+        id: usuarioEditado[0].id,
+        name: usuarioEditado[0].name,
+        email: usuarioEditado[0].email,
+      });
+    }
+  }
+}*/

@@ -5,17 +5,15 @@ import {reduxForm} from 'redux-form'
 
 
 const onSubmit = (values, dispatch) => {
-    if (!values.id) {
-        dispatch(addUsuario(values.name, values.email))
-    } else {
+    dispatch(addUsuario(values.name, values.email))
+    
+    if (values.id) {
         dispatch(editUsuario(values.id, values.name, values.email))
     }
 }
 
 const mapStateToProps = (store) => {
     return {
-        usuarios: store.usuarios.lista,
-        isFetchingUsuarios: store.usuarios.isFetchingUsuarios,
         logged: store.auth.logged
     }
 }
@@ -26,3 +24,6 @@ const reduxFormConfig = {
 }
 
 export default connect(mapStateToProps)(reduxForm(reduxFormConfig)(Formulario))
+
+/* usuarios: store.usuarios.lista,
+        isFetchingUsuarios: store.usuarios.isFetchingUsuarios, */

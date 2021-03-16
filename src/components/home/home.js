@@ -1,8 +1,8 @@
 import React from 'react';
 import css from './home.module.css';
-import Producto from '../producto/index'
+import Usuario from '../usuario/index'
 
-class Productos extends React.Component {
+class Usuarios extends React.Component {
 
   componentDidMount = () => {
       this.props.fetchUsuarios();
@@ -19,7 +19,7 @@ class Productos extends React.Component {
           {this.props.fail && <span className={css.listTitle}>Error al cargar usuarios...</span>}
             {
               this.props.usuarios.map((usuario) => {
-                return <Producto history={this.props.history} key={usuario.id} item={usuario}/>
+                return <Usuario key={usuario.id} item={usuario}/>
               })
             }
           </section>
@@ -31,7 +31,7 @@ class Productos extends React.Component {
 
   loginLogout = () => {
     if (this.props.logged) {
-      this.props.history.push("/home")
+      this.props.history.push('/home')
     } else {
       this.props.history.push("/login")
     }
@@ -43,4 +43,4 @@ class Productos extends React.Component {
 }
 
 
-export default Productos;
+export default Usuarios;

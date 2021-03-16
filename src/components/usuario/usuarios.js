@@ -1,8 +1,8 @@
 import React from 'react'
-import css from './producto.module.css'
+import css from './usuario.module.css'
 
 
-class Producto extends React.Component {
+class Usuario extends React.Component {
         
     render = () => {
         return (
@@ -24,4 +24,4 @@ class Producto extends React.Component {
         this.props.borrarUsuario(this.props.item.id);
     }
 }
-export default Producto
+export default Usuario

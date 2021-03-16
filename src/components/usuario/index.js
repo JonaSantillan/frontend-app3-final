@@ -1,10 +1,12 @@
-import Producto from './producto'
+import Usuarios from './usuarios'
 import { connect } from 'react-redux'
 import { deleteUsuario} from '../../redux/index'
 
 const mapStateToProps = (store) => {
     return {
-        logged: store.auth.logged
+        logged: store.auth.logged,
+        usuarios: store.usuarios.lista,
+        isFetchingUsuarios: store.usuarios.isFetchingUsuarios,
     }
 }
 
@@ -14,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Producto)
+export default connect(mapStateToProps, mapDispatchToProps)(Usuarios)
