@@ -6,7 +6,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import './App.module.css';
+import './app.module.css';
 import Formulario from './components/formulario/index';
 
 function App() {
