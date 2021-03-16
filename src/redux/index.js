@@ -107,9 +107,10 @@ const reducer = (store = initialStore, action) => {
                 console.log(error);
             });
             return {
-                ...store,
-            };
-        }
+                 lista: list,
+              ...store,
+          };
+      }
         case 'EDIT_USER': {
                let usuario = JSON.stringify({
                  name: action.name,
@@ -128,6 +129,7 @@ const reducer = (store = initialStore, action) => {
                 console.log(error);
             });
             return {
+                lista: list,
                 ...store,
             };
         }
