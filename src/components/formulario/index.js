@@ -1,6 +1,6 @@
 import Formulario from './formulario'
 import { connect } from 'react-redux'
-import { addProducto} from '../home/index'
+import { addProducto} from '../home/home'
 import { editProducto} from '../../redux/index'
 import {reduxForm} from 'redux-form'
 
