@@ -90,6 +90,7 @@ const reducer = (store = initialStore, action) => {
             };
         }
         case 'ADD_USER': {
+          const usuarios = [...store.lista]
             let usuario = JSON.stringify({
                 name: action.name,
                 email: action.email,
@@ -106,12 +107,16 @@ const reducer = (store = initialStore, action) => {
             }).catch((error) => {
                 console.log(error);
             });
+            const list = usuarios.filter((usuario) => {
+              return usuario.id !== action.id;
+          })
             return {
                  lista: list,
               ...store,
           };
       }
         case 'EDIT_USER': {
+          const usuarios = [...store.lista]
                let usuario = JSON.stringify({
                  name: action.name,
                  email: action.email,
@@ -128,6 +133,9 @@ const reducer = (store = initialStore, action) => {
             }).catch((error) => {
                 console.log(error);
             });
+            const list = usuarios.filter((usuario) => {
+              return usuario.id !== action.id;
+          })
             return {
                 lista: list,
                 ...store,
