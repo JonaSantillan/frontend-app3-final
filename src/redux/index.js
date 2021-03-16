@@ -91,7 +91,7 @@ const reducer = (store = initialStore, action) => {
         }
         case 'ADD_USER': {
           const usuarios = [...store.lista]
-            usuario.push({
+            usuarios.push({
               name: action.name,
               email: action.email
             })
