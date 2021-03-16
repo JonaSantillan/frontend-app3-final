@@ -10,16 +10,15 @@ class Formulario extends React.Component {
       this.props.history.push('/');
     }
     if (this.props.match.params.id) {
-      let productoEditado = this.props.productos.filter(obj => 
+      let usuarioEditado = this.props.usuarios.filter(obj => 
       {
-        return obj._id === this.props.match.params.id
+        return obj.id === this.props.match.params.id
       })
-      if (productoEditado) {
+      if (usuarioEditado) {
         this.props.initialize({ 
-          _id: productoEditado[0]._id,
-          nombre: productoEditado[0].nombre,
-          descripcion: productoEditado[0].descripcion,
-          precio: productoEditado[0].precio,
+          id: usuarioEditado[0].id,
+          name: usuarioEditado[0].nombre,
+          email: usuarioEditado[0].email,
         });
       }
     }
@@ -31,12 +30,11 @@ class Formulario extends React.Component {
           <div className={css.container}>
             <section className={css.addSection}>  
               <div className={css.informationSection}>
-                  <span className={css.titleAlumno}>Producto:</span>
-                  <Field name="_id" className={css.hiddenInput} component="input" type="text" />
-                  <Field placeholder="Nombre" name="nombre" className={css.input} component="input" type="text" />
-                  <Field placeholder="Descripción" name="descripcion" className={css.input} component="input" type="text" />
-                  <Field placeholder="Precio" name="precio" className={css.input} component="input" type="text" />
-                  <button id="saveButton" className={css.buttonSave} onClick={this.saveNewProducto}>Guardar Información</button>
+                  <span className={css.titleAlumno}>Usuario:</span>
+                  <Field name="id" className={css.hiddenInput} component="input" type="text" />
+                  <Field placeholder="name" name="nombre" className={css.input} component="input" type="text" />
+                  <Field placeholder="email" name="email" className={css.input} component="input" type="text" />
+                  <button id="saveButton" className={css.buttonSave} onClick={this.saveNewUsuario}>Guardar Información</button>
               </div>
             </section>
             <button 
@@ -51,7 +49,7 @@ class Formulario extends React.Component {
       )
   }
 
-  saveNewProducto = () => {
+  saveNewUsuario = () => {
       this.props.handleSubmit();
       this.props.history.push('/');
   }

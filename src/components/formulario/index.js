@@ -1,27 +1,27 @@
 import Formulario from './formulario'
 import { connect } from 'react-redux'
-import { addProducto} from '../../redux/index'
-import { editProducto} from '../../redux/index'
+import { addUsuario, editUsuario} from '../../redux/index'
+import { editUsuario} from '../../redux/index'
 import {reduxForm} from 'redux-form'
 
 
 const onSubmit = (values, dispatch) => {
-    if (!values._id) {
-        dispatch(addProducto(values.nombre, values.descripcion, values.precio))
+    if (!values.id) {
+        dispatch(addUsuario(values.nombre, values.email))
     } else {
-        dispatch(editProducto(values._id, values.nombre, values.descripcion, values.precio))
+        dispatch(editUsuario(values.id, values.nombre, values.email))
     }
 }
 
 const mapStateToProps = (store) => {
     return {
-        productos: store.productos.lista,
+        usuarios: store.usuarios.lista,
         logged: store.auth.logged
     }
 }
 
 const reduxFormConfig = {
-    form: 'formProducto',
+    form: 'formUsuario',
     onSubmit
 }
 

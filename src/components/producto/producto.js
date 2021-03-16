@@ -9,20 +9,19 @@ class Producto extends React.Component {
             <div className={css.counter}>
                 <span className={css.label}>
                     <b>Nombre:</b> {this.props.item.nombre}<br></br>
-                    <b>Descripcion:</b> {this.props.item.descripcion}<br></br>
-                    <b>Precio:</b> ${this.props.item.precio}<br></br>
+                    <b>Email:</b> {this.props.item.email}<br></br>
                 </span>
-                <button hidden={!this.props.logged} className={css.button} onClick={this.editarProducto}>Editar</button>
-                <button hidden={!this.props.logged} className={css.button} onClick={this.deleteProducto}>Eliminar</button>
+                <button hidden={!this.props.logged} className={css.button} onClick={this.editarUsuario}>Editar</button>
+                <button hidden={!this.props.logged} className={css.button} onClick={this.deleteUsuario}>Eliminar</button>
             </div>
         )
     }
 
-    editarProducto = () => {
-      this.props.history.push("/formulario/"+this.props.item._id)
+    editarUsuario = () => {
+      this.props.history.push("/formulario/"+this.props.item.id)
     }
-    deleteProducto = () => {
-        this.props.borrarProducto(this.props.item._id);
+    deleteUsuario = () => {
+        this.props.borrarUsuario(this.props.item.id);
     }
 }
 export default Producto

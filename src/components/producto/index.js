@@ -1,6 +1,6 @@
 import Producto from './producto'
 import { connect } from 'react-redux'
-import { delProducto} from '../../redux/index'
+import { deleteUsuario} from '../../redux/index'
 
 const mapStateToProps = (store) => {
     return {
@@ -10,7 +10,7 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {        
-        borrarProducto: (_id) => dispatch(delProducto(_id))
+        borrarUsuario: (id) => dispatch(deleteUsuario(id))
     }
 }
 

@@ -4,108 +4,105 @@ import {reducer as authReducer} from  './modulos/auth'
 import thunk from 'redux-thunk'
 
 const initialStore = {
-    isFetchingProductos: false,
+    isFetchingUsuarios: false,
     fail: false,
     lista: [],
 }
 
-export const addProducto = (nombre, descripcion, precio) => {
+export const addUsuario = (nombre, email) => {
     return {
-        type: 'ADD_PRODUCTO',
-        nombre: nombre,
-        descripcion: descripcion,
-        precio: precio
+      type: 'ADD_USER',
+      name: nombre,
+      email: email
     }
 }
 
-export const editProducto = (_id, nombre, descripcion, precio) => {
+export const editUsuario = (id, nombre, email) => {
     return {
-        type: 'EDIT_PRODUCTO',
-        _id: _id,
-        nombre: nombre,
-        descripcion: descripcion,
-        precio: precio
+        type: 'EDIT_USER',
+        id: id,
+        name: nombre,
+        email: email
     }
 }
 
-export const delProducto = (_id) => {
+export const deleteUsuario = (id) => {
     return {
-        type: 'DEL_PRODUCTO',
-        _id: _id,
+        type: 'DELETE_USER',
+        id: id,
     }
 }
 
-export const fetchProductos = () => {
+export const fetchUsuarios = () => {
     return async (dispatch) => {
-        dispatch(fetchProductosPending());
+        dispatch(fetchUsuariosPending());
         try {
-            const response = await fetch("http://localhost:3001/productos");
+            const response = await fetch("https://jsonplaceholder.typicode.com/users");
             const data = await response.json();
-            return dispatch(fetchProductosSuccess(data));
+            return dispatch(fetchUsuariosSuccess(data));
         }
         catch (error) {
-            return dispatch(fetchProductosFail(error.toString()));
+            return dispatch(fetchUsuariosFail(error.toString()));
         }
     }
 }
 
-export const fetchProductosPending = () => {
+export const fetchUsuariosPending = () => {
     return {
-        type: "FETCH_PRODUCTOS_PENDING",
+        type: "FETCH_USUARIOS_PENDING",
     }
 }
 
-export const fetchProductosSuccess = (data) => {
+export const fetchUsuariosSuccess = (data) => {
     return {
-        type: "FETCH_PRODUCTOS_SUCCESS",
+        type: "FETCH_USUARIOS_SUCCESS",
         payload: data,
     }
 }
 
-export const fetchProductosFail = (error) => {
+export const fetchUsuariosFail = (error) => {
     return {
-        type: "FETCH_PRODUCTOS_FAIL",
+        type: "FETCH_USUARIOS_FAIL",
         payload: error,
     }
 }
 
 const reducer = (store = initialStore, action) => {
     switch (action.type) {
-        case 'FETCH_PRODUCTOS_SUCCESS': {
+        case 'FETCH_USUARIOS_SUCCESS': {
             return {
                 ...store,
                 lista: action.payload,
-                isFetchingProductos: false,
+                isFetchingUsuarios: false,
             };
         }
-        case 'FETCH_PRODUCTOS_PENDING': {
+        case 'FETCH_USUARIOS_PENDING': {
             return {
                 ...store,
-                isFetchingProductos: true,
+                isFetchingUsuarios: true,
             };
         }
-        case 'FETCH_PRODUCTOS_FAIL': {
+        case 'FETCH_USUARIOS_FAIL': {
             return {
                 ...store,
-                isFetchingProductos: false,
+                isFetchingUsuarios: false,
                 fail: true,
             };
         }
-        case 'ADD_PRODUCTO': {
-            let prod = JSON.stringify({
-                nombre: action.nombre,
-                descripcion: action.descripcion,
-                precio: parseFloat(action.precio)
+        case 'ADD_USER': {
+            let usuario = JSON.stringify({
+                name: action.name,
+                email: action.email,
             });
-            fetch("http://localhost:3001/productos", {
+            fetch("https://jsonplaceholder.typicode.com/users", {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: prod
-            }).then((productoNuevo) => {
-                console.log('Producto Agregado');
+                body: usuario
+            }).then((usuarioNuevo) => {
+                console.log('Usuario Agregado');
             }).catch((error) => {
                 console.log(error);
             });
@@ -113,21 +110,20 @@ const reducer = (store = initialStore, action) => {
                 ...store,
             };
         }
-        case 'EDIT_PRODUCTO': {
-            let prod = JSON.stringify({
-                nombre: action.nombre,
-                descripcion: action.descripcion,
-                precio: parseFloat(action.precio)
-            });
-            fetch("http://localhost:3001/productos?id="+action._id, {
+        case 'EDIT_USER': {
+               let usuario = JSON.stringify({
+                 name: action.name,
+                 email: action.email,
+             });
+             fetch("https://jsonplaceholder.typicode.com/users"+action.id, {
                 method: 'put',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: prod
-            }).then((productoEditado) => {
-                console.log('Producto Editado');
+                body: usuario
+            }).then((usuarioEditado) => {
+                console.log('Usuario Editado');
             }).catch((error) => {
                 console.log(error);
             });
@@ -135,21 +131,21 @@ const reducer = (store = initialStore, action) => {
                 ...store,
             };
         }
-        case 'DEL_PRODUCTO': {
-            const productos = [...store.lista]
-            fetch("http://localhost:3001/productos?id="+action._id, {
+        case 'DELETE_USER': {
+            const usuarios = [...store.lista]
+            fetch("https://jsonplaceholder.typicode.com/users"+action.id, {
                 method: 'delete',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-            }).then((productoElimado) => {
-                console.log('Producto Eliminado');
+            }).then((usuarioElimado) => {
+                console.log('Usuario Eliminado');
             }).catch((error) => {
                 console.log(error);
             });
-            const list = productos.filter((producto) => {
-                return producto._id !== action._id;
+            const list = usuarios.filter((usuario) => {
+                return usuario.id !== action.id;
             })
             return {
                 lista: list
@@ -161,7 +157,7 @@ const reducer = (store = initialStore, action) => {
 }
 
 const rootReducer = combineReducers({
-    productos: reducer,
+    usuarios: reducer,
     form: formReducer,
     auth: authReducer
 })

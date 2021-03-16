@@ -1,20 +1,20 @@
 import Productos from './home'
 import { connect } from 'react-redux'
-import { fetchProductos } from '../../redux'
+import { fetchUsuarios } from '../../redux'
 import { logout } from '../../redux/modulos/auth'
 
 const mapStateToProps = (store) => {
     return {
-        productos: store.productos.lista,
-        isFetchingProductos: store.productos.isFetchingProductos,
-        fail: store.productos.fail,
+        usuarios: store.usuarios.lista,
+        isFetchingUsuarios: store.usuarios.isFetchingUsuarios,
+        fail: store.usuarios.fail,
         logged: store.auth.logged
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchProductos: () => dispatch(fetchProductos()),
+        fetchUsuarios: () => dispatch(fetchUsuarios()),
         logout:() => dispatch(logout())
     }
 }

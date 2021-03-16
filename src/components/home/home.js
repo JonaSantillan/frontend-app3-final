@@ -5,7 +5,7 @@ import Producto from '../producto/index'
 class Productos extends React.Component {
 
   componentDidMount = () => {
-      this.props.fetchProductos();
+      this.props.fetchUsuarios();
   }
 
   render() {
@@ -14,16 +14,16 @@ class Productos extends React.Component {
         <div className={css.container}>
           <button className={css.button} onClick={this.loginLogout}>{this.props.logged ? "Logout" : "Iniciar Sesión"}</button>        
           <section className={css.listSection}>    
-          {!this.props.isFetchingProductos && !this.props.fail && <span className={css.listTitle}>Lista de Productos:</span>}
-          {this.props.isFetchingProductos && <span className={css.listTitle}>Cargando productos...</span>} 
-          {this.props.fail && <span className={css.listTitle}>Error al cargar productos...</span>}
+          {!this.props.isFetchingUsuarios && !this.props.fail && <span className={css.listTitle}>Lista de Usuarios:</span>}
+          {this.props.isFetchingUsuarios && <span className={css.listTitle}>Cargando Usuarios...</span>} 
+          {this.props.fail && <span className={css.listTitle}>Error al cargar usuarios...</span>}
             {
-              this.props.productos.map((producto) => {
-                return <Producto history={this.props.history} key={producto._id} item={producto}/>
+              this.props.usuarios.map((usuario) => {
+                return <Producto history={this.props.history} key={usuario.id} item={usuario}/>
               })
             }
           </section>
-          <button hidden={!this.props.logged} className={css.button} onClick={this.addProducto}>Agregar Producto</button>
+          <button hidden={!this.props.logged} className={css.button} onClick={this.addUsuario}>Agregar Usuario</button>
         </div>
       </div>
     );
@@ -37,7 +37,7 @@ class Productos extends React.Component {
     }
   }
 
-  addProducto = () => {
+  addUsuario = () => {
     this.props.history.push("/formulario")
   }
 }
