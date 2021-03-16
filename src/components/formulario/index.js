@@ -15,6 +15,7 @@ const onSubmit = (values, dispatch) => {
 const mapStateToProps = (store) => {
     return {
         usuarios: store.usuarios.lista,
+        isFetchingUsuarios: store.usuarios.isFetchingUsuarios,
         logged: store.auth.logged
     }
 }
