@@ -91,30 +91,15 @@ const reducer = (store = initialStore, action) => {
         }
         case 'ADD_USER': {
           const usuarios = [...store.lista]
-            let usuario = JSON.stringify({
-                name: action.name,
-                email: action.email,
-            });
-            fetch("https://jsonplaceholder.typicode.com/users", {
-                method: 'post',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: usuario
-            }).then((usuarioNuevo) => {
-                console.log('Usuario Agregado');
-            }).catch((error) => {
-                console.log(error);
-            });
-            const list = usuarios.filter((usuario) => {
-              return usuario.id !== action.id;
-          })
-            return {
-                 lista: list,
-              ...store,
-          };
+            usuario.push({
+              name: action.name,
+              email: action.email
+            })
+            return{
+              lista: usuarios
+            };
       }
+
         case 'EDIT_USER': {
           const usuarios = [...store.lista]
                let usuario = JSON.stringify({
