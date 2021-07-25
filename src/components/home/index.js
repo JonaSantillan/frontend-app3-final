@@ -4,6 +4,7 @@ import { fetchUsuarios } from '../../redux'
 import { logout } from '../../redux/modulos/auth'
 
 const mapStateToProps = (store) => {
+    console.log(store.usuarios.lista)
     return {
         usuarios: store.usuarios.lista,
         isFetchingUsuarios: store.usuarios.isFetchingUsuarios,

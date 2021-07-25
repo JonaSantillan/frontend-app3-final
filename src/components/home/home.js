@@ -4,9 +4,7 @@ import Usuario from '../usuario/index'
 
 class Usuarios extends React.Component {
 
-  componentDidMount = () => {
-      this.props.fetchUsuarios();
-  }
+  
 
   render() {
     return (
@@ -44,3 +42,7 @@ class Usuarios extends React.Component {
 
 
 export default Usuarios;
+
+/* componentDidMount = () => {
+      this.props.fetchUsuarios();
+  } */

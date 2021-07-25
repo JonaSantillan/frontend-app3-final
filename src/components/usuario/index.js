@@ -4,6 +4,7 @@ import { deleteUsuario} from '../../redux/index'
 
 const mapStateToProps = (store) => {
     return {
+        
         logged: store.auth.logged,
         usuarios: store.usuarios.lista,
         isFetchingUsuarios: store.usuarios.isFetchingUsuarios,
