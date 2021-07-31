@@ -2,6 +2,7 @@ import {createStore, applyMiddleware, combineReducers} from 'redux'
 import {reducer as formReducer } from 'redux-form'
 import {reducer as authReducer} from  './modulos/auth'
 import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const initialStore = {
     isFetchingUsuarios: false,
@@ -162,4 +163,4 @@ const rootReducer = combineReducers({
     auth: authReducer
 })
 
-export const store = createStore(rootReducer, applyMiddleware(thunk))
+export const store = createStore(Reducer, composeWithDevTools(applyMiddleware(thunk)))
