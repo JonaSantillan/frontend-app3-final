@@ -4,6 +4,7 @@ import { login } from '../../redux/modulos/auth'
 import { reduxForm } from 'redux-form'
 
 const mapStateToProps = (store) => {
+
   return {
     isFetching: store.auth.isFetching,
     messageError: store.auth.error,
@@ -27,3 +28,5 @@ const reduxFormConfig = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm(reduxFormConfig)(Sidebar))
+
+/* */
