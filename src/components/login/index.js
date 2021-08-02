@@ -27,3 +27,5 @@ const reduxFormConfig = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm(reduxFormConfig)(Sidebar))
+
+/* */
