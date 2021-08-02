@@ -1,17 +1,19 @@
-import Producto from './producto'
+import Usuarios from './usuarios'
 import { connect } from 'react-redux'
-import { delProducto} from '../../redux/index'
+import { deleteUsuario} from '../../redux/index'
 
 const mapStateToProps = (store) => {
     return {
-        logged: store.auth.logged
+        logged: store.auth.logged,
+        usuarios: store.usuarios.lista,
+        isFetchingUsuarios: store.usuarios.isFetchingUsuarios,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {        
-        borrarProducto: (_id) => dispatch(delProducto(_id))
+        borrarUsuario: (id) => dispatch(deleteUsuario(id))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Producto)
+export default connect(mapStateToProps, mapDispatchToProps)(Usuarios)
