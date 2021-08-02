@@ -14,7 +14,9 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" 
+                 component={Login} 
+          />
           <Route exact path="/" component={Home} />
           <Route exact path="/formulario" component={Formulario} />
           <Route exact path="/formulario/:id" component={Formulario} />
@@ -24,5 +26,5 @@ function App() {
     </Router>
   );
 }
-
+//app
 export default App;
