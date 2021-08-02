@@ -1,29 +1,29 @@
 import React from 'react';
 import css from './home.module.css';
-import Producto from '../producto/index'
+import Usuario from '../usuario/index'
 
-class Productos extends React.Component {
+class Usuarios extends React.Component {
 
   componentDidMount = () => {
-      this.props.fetchProductos();
+      this.props.fetchUsuarios();
   }
 
   render() {
     return (
       <div className={css.app}>
         <div className={css.container}>
-          <button className={css.button} onClick={this.loginLogout}>{this.props.logged ? "Logout" : "Login"}</button>
+          <button className={css.button} onClick={this.loginLogout}>{this.props.logged ? "Logout" : "Iniciar Sesión"}</button>        
           <section className={css.listSection}>    
-          {!this.props.isFetchingProductos && !this.props.fail && <span className={css.listTitle}>Lista de Productos:</span>}
-          {this.props.isFetchingProductos && <span className={css.listTitle}>Cargando productos...</span>} 
-          {this.props.fail && <span className={css.listTitle}>Error al cargar productos...</span>}
+          {!this.props.isFetchingUsuarios && !this.props.fail && <span className={css.listTitle}>Lista de Usuarios:</span>}
+          {this.props.isFetchingUsuarios && <span className={css.listTitle}>Cargando Usuarios...</span>} 
+          {this.props.fail && <span className={css.listTitle}>Error al cargar usuarios...</span>}
             {
-              this.props.productos.map((producto) => {
-                return <Producto history={this.props.history} key={producto._id} item={producto}/>
+              this.props.usuarios.map((usuario) => {
+                return <Usuario key={usuario.id} item={usuario}/>
               })
             }
-          </section>          
-          <button hidden={!this.props.logged} className={css.button} onClick={this.addProducto}>Agregar Producto</button>
+          </section>
+          <button hidden={!this.props.logged} className={css.button} onClick={this.addUsuario}>Agregar Usuario</button>
         </div>
       </div>
     );
@@ -31,16 +31,16 @@ class Productos extends React.Component {
 
   loginLogout = () => {
     if (this.props.logged) {
-      this.props.logout();
+      this.props.history.push('/home')
     } else {
       this.props.history.push("/login")
     }
   }
 
-  addProducto = () => {
+  addUsuario = () => {
     this.props.history.push("/formulario")
   }
 }
 
 
-export default Productos;
+export default Usuarios;
